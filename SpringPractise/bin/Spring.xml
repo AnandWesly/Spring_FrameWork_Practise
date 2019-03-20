@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+               
+     <context:annotation-config/>
+     	<!--Auto wiring by Name -->
+	<!-- <bean id="triangleObjUutowireParent" class="com.anand.spring.TriangleObj">
+		<property name="pointA">
+			<bean id="pointA" class="com.anand.spring.Point">
+				<property name="x" value="-20"></property>
+				<property name="y" value="0"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="triangleObjUutowire" class="com.anand.spring.TriangleObj"
+		parent="triangleObjUutowireParent" autowire="byName">
+	</bean>
+	<bean id="pointB" class="com.anand.spring.Point">
+		<property name="x" value="${pointB.pointx}"></property>
+		<property name="y" value="${pointB.pointy}"></property>
+	</bean>
+	<bean id="pointC" class="com.anand.spring.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="20"></property>
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="Point.properties"></property>
+	</bean> 
+	 -->
+	<bean id="pointC" class="com.anand.spring.Point">
+			<qualifier value="circle"></qualifier>
+	
+		<property name="x" value="-20"></property>
+		<property name="y" value="20"></property>
+	</bean>
+	<bean id="pointC1" class="com.anand.spring.Point">
+		<property name="x" value="-10"></property>
+		<property name="y" value="20"></property>
+	</bean>
+	
+	<!-- <bean id="Circle" class="com.anand.spring.Circle">
+	</bean> -->
+		<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	<context:component-scan base-package="com.anand.spring"></context:component-scan>
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basenames">	
+	<list>
+	<value>MyMessage</value>
+	</list>
+	</property>
+	</bean>
+</beans>
